@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -std=c11
 
 #Input file
-INPUT = input2.txt
+INPUT = test5.txt
 OUTPUT = output.txt
 REF = ref2.txt
 # Source file

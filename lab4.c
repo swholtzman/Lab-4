@@ -1,11 +1,10 @@
 // A01308106
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_POINTS 1000 
-#define MAX_SIZE 100    
+#define MAX_POINTS 1000
+#define MAX_SIZE 100
 
 typedef struct
 {
@@ -18,8 +17,6 @@ int maxX = 0;
 int maxY = 0;
 
 Point pointsArray[MAX_POINTS];
-
-
 
 /**
  * Function to read points from the input file
@@ -54,8 +51,6 @@ void readPoints(const char *inputFileName)
     fclose(inputFile);
 }
 
-
-
 /**
  * Function to calculate the maximum bounds of the points
  */
@@ -77,8 +72,6 @@ void calculateMaxBounds()
     maxX++; // Increment by 1 to account for zero-based indexing
     maxY++; // Increment by 1 to account for zero-based indexing
 }
-
-
 
 /**
  * Function to create array and draw outline based on points
@@ -135,8 +128,6 @@ void createArrayAndDrawOutline(char *matrix)
     }
 }
 
-
-
 /**
  * Function to find centroid of the points
  * @return The centroid point
@@ -154,8 +145,6 @@ Point findCentroid()
     centroid.y = sumY / numPoints;
     return centroid;
 }
-
-
 
 /**
  * Function to fill the shape using flood fill algorithm
@@ -178,8 +167,6 @@ void fillShape(char *arr, int x, int y)
         fillShape(arr, x, y - 1);
     }
 }
-
-
 
 /**
  * Function to print the array
@@ -213,21 +200,20 @@ void printArray(FILE *outputFile, char *arr)
     {
         for (int x = startCol; x <= endCol; x++)
         {
-            if (arr[y * maxX + x] == '*') {
+            if (arr[y * maxX + x] == '*')
+            {
                 fprintf(outputFile, "*");
-
-            } else if (arr[x * maxX + y] == '*') { 
+            }
+            else 
+            {
                 fprintf(outputFile, " ");
-            } 
-
+            }
         }
         // Check if this is not the last row
         if (y != startRow)
             fprintf(outputFile, "\n");
     }
 }
-
-
 
 /**
  * Main function
@@ -272,6 +258,29 @@ int main(int argc, char *argv[])
     // Find centroid and fill the shape starting from there
     Point centroid = findCentroid();
     fillShape(matrix, centroid.x, centroid.y);
+
+    // for (int y = maxY - 1; y >= 0; y--)
+    // {
+    //     int pastStar = 0;
+    //     for (int x = 0; x < maxX; x++)
+    //     {
+    //         printf("%c ", matrix[y * maxX + x]);
+    //         if (matrix[y * maxX + x] == ' ' && pastStar == 0)
+    //         {
+    //             printf(" ");
+    //         }
+    //         if (matrix[y * maxX + x] == ' ')
+    //         {
+    //             printf("");
+    //             pastStar = 1;
+    //         }
+    //     }
+    //     pastStar = 0;
+    //     if (y != 0)
+    //     {
+    //         printf("\n");
+    //     }
+    // }
 
     printArray(outputFile, matrix);
 
