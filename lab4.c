@@ -1,8 +1,11 @@
+// A01308106
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_POINTS 1000 // Maximum number of points
-#define MAX_SIZE 100    // Maximum size for x and y dimensions of the array
+#define MAX_POINTS 1000 
+#define MAX_SIZE 100    
 
 typedef struct
 {
@@ -16,7 +19,12 @@ int maxY = 0;
 
 Point pointsArray[MAX_POINTS];
 
-// Function to read points from the input file
+
+
+/**
+ * Function to read points from the input file
+ * @param inputFileName The name of the input file containing points
+ */
 void readPoints(const char *inputFileName)
 {
     FILE *inputFile = fopen(inputFileName, "r");
@@ -46,7 +54,11 @@ void readPoints(const char *inputFileName)
     fclose(inputFile);
 }
 
-// Function to calculate the maximum bounds
+
+
+/**
+ * Function to calculate the maximum bounds of the points
+ */
 void calculateMaxBounds()
 {
     maxX = pointsArray[0].x;
@@ -66,7 +78,12 @@ void calculateMaxBounds()
     maxY++; // Increment by 1 to account for zero-based indexing
 }
 
-// Function to create array and draw outline
+
+
+/**
+ * Function to create array and draw outline based on points
+ * @param matrix The character matrix representing the drawing
+ */
 void createArrayAndDrawOutline(char *matrix)
 {
     // Initialize the array with spaces
@@ -118,6 +135,12 @@ void createArrayAndDrawOutline(char *matrix)
     }
 }
 
+
+
+/**
+ * Function to find centroid of the points
+ * @return The centroid point
+ */
 Point findCentroid()
 {
     int sumX = 0, sumY = 0;
@@ -132,7 +155,14 @@ Point findCentroid()
     return centroid;
 }
 
-// Function to fill the shape using flood fill algorithm
+
+
+/**
+ * Function to fill the shape using flood fill algorithm
+ * @param arr The character matrix representing the shape
+ * @param x The x-coordinate to start filling from
+ * @param y The y-coordinate to start filling from
+ */
 void fillShape(char *arr, int x, int y)
 {
     // Check if the current spot is empty and within bounds
@@ -149,6 +179,13 @@ void fillShape(char *arr, int x, int y)
     }
 }
 
+
+
+/**
+ * Function to print the array
+ * @param outputFile The output file to print to
+ * @param arr The character matrix representing the shape
+ */
 void printArray(FILE *outputFile, char *arr)
 {
     int startRow = maxY - 1;
@@ -189,6 +226,12 @@ void printArray(FILE *outputFile, char *arr)
 
 
 
+/**
+ * Main function
+ * @param argc Number of command-line arguments
+ * @param argv Array of command-line arguments
+ * @return Exit status
+ */
 int main(int argc, char *argv[])
 {
     if (argc != 3)
