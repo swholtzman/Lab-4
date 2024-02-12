@@ -213,10 +213,13 @@ void printArray(FILE *outputFile, char *arr)
     {
         for (int x = startCol; x <= endCol; x++)
         {
-            if (arr[y * maxX + x] == '*')
+            if (arr[y * maxX + x] == '*') {
                 fprintf(outputFile, "*");
-            else
+
+            } else if (arr[x * maxX + y] == '*') { 
                 fprintf(outputFile, " ");
+            } 
+
         }
         // Check if this is not the last row
         if (y != startRow)
