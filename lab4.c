@@ -149,7 +149,6 @@ void fillShape(char *arr, int x, int y)
     }
 }
 
-// Function to print the array
 void printArray(FILE *outputFile, char *arr)
 {
     int startRow = maxY - 1;
@@ -177,13 +176,17 @@ void printArray(FILE *outputFile, char *arr)
     {
         for (int x = startCol; x <= endCol; x++)
         {
-            fprintf(outputFile, "%c", (arr[y * maxX + x] == '*') ? '*' : ' ');
+            if (arr[y * maxX + x] == '*')
+                fprintf(outputFile, "*");
+            // else
+            //     fprintf(outputFile, " ");
         }
         // Check if this is not the last row
         if (y != startRow)
             fprintf(outputFile, "\n");
     }
 }
+
 
 
 int main(int argc, char *argv[])
