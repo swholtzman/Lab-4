@@ -1,3 +1,6 @@
+// A01308106
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -108,7 +111,6 @@ void printArray(FILE *outputFile, char arr[][MAX_SIZE])
         fprintf(outputFile, "\n");
     }
 }
-
 
 
 
