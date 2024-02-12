@@ -178,8 +178,8 @@ void printArray(FILE *outputFile, char *arr)
         {
             if (arr[y * maxX + x] == '*')
                 fprintf(outputFile, "*");
-            // else
-            //     fprintf(outputFile, " ");
+            else
+                fprintf(outputFile, " ");
         }
         // Check if this is not the last row
         if (y != startRow)
